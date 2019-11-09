@@ -1,3 +1,7 @@
+#Incomplete, trying to simulate the outcome of the 2048 game
+
+
+
 row_1 = [int(x) for x in input().split()]
 row_2 = [int(x) for x in input().split()]
 row_3 = [int(x) for x in input().split()]
