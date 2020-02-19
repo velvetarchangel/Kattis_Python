@@ -1,2 +1,1 @@
-# Kattis_Python
-Kattis problems I have solved on Python while participating in the Competitive programming Club
+# Code wars, Kattis and UVa problems that I have worked on as part of the Competitive Programming club as well as on my own time
