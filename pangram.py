@@ -15,3 +15,4 @@ for i in range(N):
         for i in answer:
             print(i, end = '')
         print("")
+
