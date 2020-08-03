@@ -1,32 +1,18 @@
+candidates = dict()
+name = input()
 
-def main():
-    candidates = []
-    votes = []
+while name != "***":
+    try:
+        temp = candidates[name]
+        candidates[name] = temp + 1
+    except KeyError:
+        candidates[name] = 1
     name = input()
-    while name != "***":
-        if name not in candidates:
-            candidates.append(name)
-            votes.append(1)
-        if name in candidates:
-            ind = candidates.index(name)
-            votes[ind] += 1
-        name = input()
-
-    winner = max(votes)
-    count = 0
-
-    for i in range(len(votes)):
-        if count == 2:
-            break
-        if votes[i] == winner:
-            count += 1
-
-    if count == 1:
-        print(candidates[votes.index(winner)])
-    elif count == 2:
-        print("Runoff!")
-
-main()
 
 
-        
+sort_candidates = sorted(candidates.items(), key = lambda x: x[1], reverse = True)
+
+if (sort_candidates[0][1] == sort_candidates[1][1]):
+    print("Runoff!")
+else:
+    print(sort_candidates[0][0])

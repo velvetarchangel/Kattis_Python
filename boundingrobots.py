@@ -1,42 +1,41 @@
-width, length = [int(x) for x in input().split()]
+#bounding robots
 
-while (width != 0 and length != 0):
-    robot_is_x = 0
-    robot_is_y = 0
-    robot_thinks_x = 0
-    robot_thinks_y = 0
-    moves = int(input())
-    for i in range (moves):
-        direction, distance = input().split()
-        distance_i = int(distance)
-        if(direction == "u"):
-            robot_thinks_y += distance_i
-            if ((robot_is_y + distance_i) <= length-1):
-                robot_is_y += distance_i
+w, l = [int(x) for x in input().split()]
+
+while w != 0 and l != 0:
+    n = int(input())
+    actual_x = 0
+    actual_y = 0
+    robotThinks_x = 0
+    robotThinks_y = 0
+    for i in range(n):
+        direction = input().split()
+        move = int(direction[1])
+        if(direction[0] == 'u'):
+            if (actual_y + move > l-1):
+                actual_y = l-1
             else:
-                robot_is_y = length_1
-        if (direction == "d"):
-            robot_thinks_y += -1*distance_i
-            if ((robot_is_y - distance_i) >= 0):
-                robot_is_y -= distance_i
+                actual_y += move
+            robotThinks_y += move
+        elif(direction[0] == 'd'):
+            if (actual_y - move < 0):
+                actual_y = 0
             else:
-                robot_is_y = 0
-        if(direction == "l"):
-            robot_thinks_x += -1*distance_i
-            if ((robot_is_x - distance_i) >= 0):
-                robot_is_x += -1*distance_i
+                actual_y -= move
+            robotThinks_y -= move
+        elif(direction[0] == 'l'):
+            if(actual_x - move < 0):
+                actual_x = 0
             else:
-                robot_is_x = 0
-        if(direction == "r"):
-            robot_thinks_x += distance_i
-            if (distance_i >= width-1):
-                robot_is_x = width-1
-            else:
-                robot_is_x += distance_i
-    print("Robot thinks " + str(robot_thinks_x) + " "  + str(robot_thinks_y))
-    print("Actually at " + str(robot_is_x) + " " + str(robot_is_y))
-    print("")
-    width,length = [int(x) for x in input().split()]
-            
-            
-        
+                actual_x -= move
+            robotThinks_x -= move
+        elif(direction[0] == 'r'):
+            if(actual_x + move > w-1):
+                actual_x = w-1
+            else:   
+                actual_x += move
+            robotThinks_x += move
+    print("Robot thinks " + str(robotThinks_x) + " " + str(robotThinks_y))
+    print("Actually at " + str(actual_x) + " " + str(actual_y) + "\n")
+    w, l = [int(x) for x in input().split()]
+    

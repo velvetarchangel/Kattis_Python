@@ -12,8 +12,6 @@ for i in reversed(range(-1, depth)):
         maxValue += 1
     array.insert(0, arr_t)
 
-print(array)
-
 Level = 0
 index = 0
 root = array[Level][index]
@@ -24,11 +22,8 @@ else:
         if path[i] == "L":
             root = array[1+Level][index]
             Level +=1
-            print(root)
         elif path[i] == "R":
             root = array[1+Level][index+1]
             Level+=1
             index += 1
-            print(root)
     print(root)
-    
