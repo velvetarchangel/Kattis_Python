@@ -4,35 +4,30 @@
 
 #not optimal times out with very large inputs
 
-import math
-
-def erastosthese_algorithm(N):
-    array = [True]*(N+1)
-    array[0] = False
-    array[1] = False
-    
-    i = 2
-    while(i*i <= N):
-        if array[i] is True:
-            for j in range(i*2, N+1 , i):
-                array[j] = False
-        i += 1
-    return array
-                                                              
+def is_Prime(N):
+    if (N == 2):
+        return True
+    elif (N % 2) == 0:
+        return False
+    else:
+        i = 3
+        while(i*i <= N):
+            if (N % i == 0):
+                return False
+            i += 2
+        return True
 
 #main algorithm
 N = int(input())
 
 while (N != 0):
-    primes_3n = erastosthese_algorithm(3*N)
-    answer = None
-    for i in range(2*N, 3*N):
-        if (primes_3n[i]):
-            answer = i
-            break
+    #since 2N will never be a prime
+    numToCheck = 2*N + 1
+    while(is_Prime(numToCheck) == False):
+        numToCheck += 2
 
-    if (primes_3n[N]):
-        print(answer)
+    if (is_Prime(N) == True):
+        print(numToCheck)
     else:
-        print(str(i) + " (" +  str(N) + " is not prime)")
+        print(str(numToCheck) + " (" +  str(N) + " is not prime)")
     N = int(input())
